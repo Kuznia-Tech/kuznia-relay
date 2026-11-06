@@ -1,0 +1,20 @@
+<section id="loop" data-transition="fade" style="background:#14213D;color:#F6F4EE;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#E8913A;letter-spacing:2px">THE CORE RULE</p>
+<h2 style="font-size:72px;font-weight:600;line-height:1.1;color:#F6F4EE">Checks find. Fix rounds fix. Re-checks prove it.</h2>
+<div style="display:flex;gap:64px;align-items:flex-start">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;align-items:center;gap:24px"><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:32px;font-weight:600;color:#E8913A;width:64px">01</p><p style="font-size:32px;color:#F6F4EE;line-height:1.35"><b>Check</b>: findings with ID, severity, file:line. No fixing.</p></div>
+<div style="display:flex;align-items:center;gap:24px"><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:32px;font-weight:600;color:#E8913A;width:64px">02</p><p style="font-size:32px;color:#F6F4EE;line-height:1.35"><b>Log</b>: severity sets the decision. No meeting.</p></div>
+<div style="display:flex;align-items:center;gap:24px"><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:32px;font-weight:600;color:#E8913A;width:64px">03</p><p style="font-size:32px;color:#F6F4EE;line-height:1.35"><b>Fix</b>: only listed IDs, a failing-first test or proof command each.</p></div>
+<div style="display:flex;align-items:center;gap:24px"><p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:32px;font-weight:600;color:#E8913A;width:64px">04</p><p style="font-size:32px;color:#F6F4EE;line-height:1.35"><b>Re-check</b>: verify each old finding, then only what changed.</p></div>
+</div>
+<table style="flex:1;font-size:28px;color:#F6F4EE;font-family:'IBM Plex Sans', Arial, sans-serif">
+<tr><th style="width:32%;color:#E8913A">Severity</th><th style="width:28%;color:#E8913A">Decision</th><th style="width:40%;color:#E8913A">Example</th></tr>
+<tr><td>blocker</td><td>fix now</td><td>wrong behaviour</td></tr>
+<tr><td>should fix</td><td>fix now</td><td>missing test</td></tr>
+<tr><td>nit</td><td>backlog</td><td>naming, polish</td></tr>
+</table>
+</div>
+<p style="font-size:30px;color:#BFC8D8;line-height:1.4">Third check of the same step still has a blocker, or a finding reopened twice? The loop stops and the owner chooses: split the task, rewrite the spec, or change the approach.</p>
+<aside>This is the single most important rule. A reviewer that also fixes destroys the evidence trail. Here every finding has an ID that is never reused, every fix has a test that fails on the old code (or a command that proves it), and a fresh agent confirms it. The round limit stops endless ping-pong.</aside>
+</section>

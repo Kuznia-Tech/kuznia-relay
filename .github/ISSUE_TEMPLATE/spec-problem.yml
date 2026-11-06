@@ -1,0 +1,29 @@
+name: Spec problem
+description: A rule that contradicts another, can't be followed, or leaves you guessing
+labels: ["spec"]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Spec version
+      placeholder: "1.2"
+    validations:
+      required: true
+  - type: textarea
+    id: where
+    attributes:
+      label: Where
+      description: File and line, or quote the rule.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What went wrong
+      description: What you tried, what you had to guess or invent.
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested fix

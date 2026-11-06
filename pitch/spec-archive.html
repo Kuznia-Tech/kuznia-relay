@@ -1,0 +1,554 @@
+<title>RLY-SPEC-001 Kuznia Relay Specification</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Archivo+Narrow:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: typed sheets on a desk blotter; cover, approvals, contents, then one sheet per section */
+:root {
+  --desk: #C9C4B2;
+  --paper: #F4F0E3;
+  --ink: #1D1C19;
+  --ink-soft: #55524A;
+  --rule: #2B2A26;
+  --stamp: #A8322A;
+  --typed: "Courier Prime", "Courier New", Courier, monospace;
+  --set: "Archivo Narrow", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box }
+body {
+  background: var(--desk);
+  color: var(--ink);
+  font: 16px/1.5 var(--typed);
+  padding-block: 40px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+#doc { display: flex; flex-direction: column; align-items: center; gap: 36px }
+.sheet {
+  position: relative;
+  width: 100%;
+  max-width: 816px;
+  min-height: 1000px;
+  background: var(--paper);
+  box-shadow: 0 1px 0 rgba(0,0,0,.08), 0 12px 28px -14px rgba(40,36,24,.55);
+  padding: 40px 72px 88px;
+  display: flex;
+  flex-direction: column;
+}
+.sheet.flow { min-height: 0 }
+.runhead {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  border: 1.5px solid var(--rule);
+  font: 700 12px/1 var(--set);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+.runhead span { padding: 8px 12px; border-right: 1.5px solid var(--rule); white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.runhead span:last-child { border-right: 0 }
+.runfoot {
+  position: absolute;
+  left: 72px; right: 72px; bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--rule);
+  padding-top: 8px;
+  font: 500 12px/1 var(--set);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* Cover */
+.cover { justify-content: space-between; gap: 40px }
+.cover .agency { font: 700 14px/1.3 var(--set); letter-spacing: .22em; text-transform: uppercase }
+.cover .docno { font: 700 13px/1.4 var(--set); letter-spacing: .12em; text-transform: uppercase; text-align: right }
+.cover .top { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; border-bottom: 3px double var(--rule); padding-bottom: 16px }
+.cover .kind { font: 700 15px/1 var(--set); letter-spacing: .3em; text-transform: uppercase; color: var(--ink-soft) }
+.cover h1 { font: 700 clamp(34px, 6.4vw, 54px)/1.02 var(--set); text-transform: uppercase; letter-spacing: .01em; margin: 14px 0 0; text-wrap: balance }
+.cover .meta { display: grid; grid-template-columns: max-content 1fr; gap: 6px 24px; font-size: 15px }
+.cover .meta dt { text-transform: uppercase; color: var(--ink-soft) }
+.cover .meta dd { margin: 0 }
+.cover .lede { max-width: 60ch; font-size: 15px }
+.stamp {
+  align-self: flex-end;
+  border: 4px solid var(--stamp);
+  color: var(--stamp);
+  font: 700 22px/1.1 var(--set);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  padding: 10px 18px 8px;
+  text-align: center;
+  transform: rotate(-7deg);
+  opacity: .82;
+  mix-blend-mode: multiply;
+  outline: 1.5px solid var(--stamp);
+  outline-offset: 3px;
+}
+.stamp small { display: block; font: 700 12px/1.4 var(--typed); letter-spacing: .08em }
+.issuer { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; border-top: 3px double var(--rule); padding-top: 14px; font: 500 13px/1.4 var(--set); letter-spacing: .12em; text-transform: uppercase }
+
+/* Forms: approvals, revisions, distribution */
+.formtitle { font: 700 15px/1.2 var(--set); letter-spacing: .2em; text-transform: uppercase; text-align: center; margin: 0 0 14px }
+.block + .block { margin-top: 36px }
+.sig { display: grid; grid-template-columns: 1fr 1fr; gap: 36px 40px; margin-top: 8px }
+.sig div { border-top: 1.5px solid var(--rule); padding-top: 6px; font-size: 13px; line-height: 1.35 }
+.sig b { display: block; font: 700 12px/1.3 var(--set); letter-spacing: .12em; text-transform: uppercase }
+.sig .blank { height: 36px; border: 0; padding: 0 }
+
+/* Body text */
+.sheet h2 {
+  font: 700 18px/1.3 var(--typed);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  margin: 0 0 18px;
+  padding-bottom: 6px;
+  border-bottom: 1.5px solid var(--rule);
+  text-wrap: balance;
+}
+.sheet h3 { font: 700 16px/1.3 var(--typed); text-transform: uppercase; margin: 28px 0 8px; text-decoration: underline; text-underline-offset: 3px }
+.sheet p, .sheet li { max-width: 68ch }
+.sheet p { margin: 0 0 14px }
+.sheet ul, .sheet ol { padding-left: 2.2em; margin: 0 0 14px }
+.sheet li { margin-bottom: 6px }
+.sheet ol { list-style: lower-alpha }
+.sheet ol > li::marker { content: counter(list-item, lower-alpha) ".  " }
+.sheet ul { list-style: none }
+.sheet ul > li { position: relative }
+.sheet ul > li::before { content: "-"; position: absolute; left: -1.4em }
+.sheet strong { font-weight: 700 }
+.sheet code { font-family: var(--typed); font-size: .94em; background: rgba(43,42,38,.07); padding: 0 3px }
+.sheet pre { border: 1.5px solid var(--rule); padding: 14px 16px; overflow-x: auto; margin: 0 0 16px; line-height: 1.4 }
+.sheet pre code { background: none; padding: 0 }
+.sheet a { color: inherit; text-decoration-thickness: 1px }
+.sheet hr { display: none }
+.tbl { overflow-x: auto; margin: 4px 0 20px; max-width: 100% }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; line-height: 1.38 }
+th, td { border: 1.5px solid var(--rule); padding: 6px 8px; text-align: left; vertical-align: top }
+th { font: 700 12px/1.25 var(--set); letter-spacing: .1em; text-transform: uppercase; background: rgba(43,42,38,.06) }
+td { min-width: 9ch }
+.toc { list-style: none !important; padding: 0 !important; margin: 0 }
+.toc li { display: flex; gap: 8px; align-items: baseline; max-width: none; margin: 0 0 9px }
+.toc li::before { content: none !important }
+.toc .lead { flex: 1; border-bottom: 2px dotted var(--ink-soft); transform: translateY(-4px); min-width: 24px }
+.toc a { text-decoration: none }
+.toc .pg { font-variant-numeric: tabular-nums }
+.endmark { text-align: center; margin-top: 40px; letter-spacing: .3em }
+:focus-visible { outline: 2px solid var(--stamp); outline-offset: 2px }
+
+@media (max-width: 640px) {
+  body { padding-block: 16px 32px; font-size: 15px }
+  #doc { gap: 20px }
+  .sheet { min-height: 0; padding: 20px 18px 72px }
+  .runfoot { left: 18px; right: 18px; bottom: 20px }
+  .runhead { grid-template-columns: 1fr auto; margin-bottom: 28px }
+  .runhead span:nth-child(2) { display: none }
+  .sig { grid-template-columns: 1fr }
+  .stamp { font-size: 17px }
+  .sheet ul, .sheet ol { padding-left: 1.6em }
+}
+</style>
+
+<main id="doc">
+  <section class="sheet cover" data-label="Cover">
+    <div>
+      <div class="top">
+        <div class="agency">Kuznia Relay Program Office<br>Software Delivery Methods</div>
+        <div class="docno">Document No. RLY-SPEC-001<br>Revision B</div>
+      </div>
+      <p class="kind" style="margin:44px 0 0">Technical Specification</p>
+      <h1>Kuznia Relay: A Gated Workflow for AI-Agent Software Delivery</h1>
+    </div>
+    <p class="lede">This specification establishes the roles, steps, checks, records and naming conventions by which short-lived AI coding agents deliver changes to a software product under the control of a single responsible engineer.</p>
+    <dl class="meta">
+      <dt>Version</dt><dd>1.2</dd>
+      <dt>Date of issue</dt><dd>6 November 2026</dd>
+      <dt>Status</dt><dd>Rendered copy. SPEC.md is normative.</dd>
+      <dt>Supersedes</dt><dd>Version 1.1</dd>
+    </dl>
+    <div class="stamp">Baseline<small>Released for use</small></div>
+    <div class="issuer"><span>Kuznia Relay Program Office</span><span>Distribution unlimited</span></div>
+    <div class="runfoot"><span>RLY-SPEC-001</span><span>Page 1</span></div>
+  </section>
+
+  <section class="sheet" data-label="Approvals">
+    <div class="block">
+      <p class="formtitle">Approval Sheet</p>
+      <div class="sig">
+        <div class="blank"></div><div class="blank"></div>
+        <div><b>Prepared by</b>Planner, Kuznia Relay Program Office</div>
+        <div><b>Date</b></div>
+        <div class="blank"></div><div class="blank"></div>
+        <div><b>Reviewed by</b>Reviewer (second model)</div>
+        <div><b>Date</b></div>
+        <div class="blank"></div><div class="blank"></div>
+        <div><b>Approved by</b>Owner, responsible engineer</div>
+        <div><b>Date</b></div>
+      </div>
+    </div>
+    <div class="block">
+      <p class="formtitle">Record of Revisions</p>
+      <div class="tbl"><table>
+        <tr><th style="width:12%">Rev.</th><th style="width:20%">Date</th><th>Description</th><th style="width:18%">Approved</th></tr>
+        <tr><td>&mdash;</td><td>2026-11-05</td><td>Basic issue. Version 1.0.</td><td></td></tr>
+        <tr><td>A</td><td>2026-11-05</td><td>Version 1.1. Coordinator and QA moved to extensions; Status, Log, Messages and Decisions to review files folded into Board, task card, Plan and Decisions.</td><td></td></tr>
+        <tr><td>B</td><td>2026-11-06</td><td>Version 1.2. Fixed step names, verdict as the report's last line, Done prompt and report, branches and worktrees, RELAY.md front matter.</td><td></td></tr>
+      </table></div>
+    </div>
+    <div class="block">
+      <p class="formtitle">Distribution</p>
+      <div class="tbl"><table>
+        <tr><th>Holder</th><th style="width:18%">Copies</th><th>Use</th></tr>
+        <tr><td>Owner</td><td>1</td><td>Approvals, stop points, feature pull request</td></tr>
+        <tr><td>Planner</td><td>1</td><td>Plans, prompts, records</td></tr>
+        <tr><td>Agents</td><td>1 per session</td><td>AGENT-RULES.md in full; other sections as linked</td></tr>
+        <tr><td>Coordinator (extension)</td><td>1</td><td>extensions/coordinator.md</td></tr>
+        <tr><td>Validator (QA extension)</td><td>1</td><td>extensions/qa.md</td></tr>
+      </table></div>
+    </div>
+    <div class="block">
+      <p class="formtitle">Applicable Documents</p>
+      <div class="tbl"><table>
+        <tr><th style="width:30%">Identifier</th><th>Title</th></tr>
+        <tr><td>RFC 2119</td><td>Key words for use in RFCs to indicate requirement levels</td></tr>
+        <tr><td>RELAY.md</td><td>Project configuration, one per project (section 10)</td></tr>
+        <tr><td>AGENT-RULES.md</td><td>Rules for agents, issued with this specification</td></tr>
+      </table></div>
+    </div>
+    <div class="runfoot"><span>RLY-SPEC-001</span><span>Page 2</span></div>
+  </section>
+
+  <section class="sheet" id="contents" data-label="Contents">
+    <h2>Table of Contents</h2>
+    <ul class="toc" id="toc"></ul>
+    <div class="runfoot"><span>RLY-SPEC-001</span><span>Page 3</span></div>
+  </section>
+  <noscript><section class="sheet flow"><p>This page needs JavaScript to set the specification text.</p></section></noscript>
+</main>
+
+<script type="text/markdown" id="src"># Kuznia Relay: a gated workflow for AI-agent software delivery
+
+**Specification, version 1.2** · 2026-11-06
+
+Kuznia Relay is a way to deliver real software changes with AI coding agents while one human engineer keeps control. Work moves between short-lived agents like a baton. Every agent reads its instructions from a shared knowledge base, does one step, and writes a report back. Nothing important lives in a chat window.
+
+This document and `AGENT-RULES.md` are normative. The words **MUST**, **MUST NOT**, **SHOULD** and **MAY** have their usual meaning (RFC 2119). A team, or a tool, that follows every MUST is Kuznia Relay-compliant. Project-specific values (branch names, test commands, the order of requirement sources) live in a project config file, not in this spec (section 10).
+
+Optional extensions: [coordinator](https://github.com/Kuznia-Tech/kuznia-relay/blob/main/extensions/coordinator.md) (runs the loop for you, e.g. overnight) and [QA](https://github.com/Kuznia-Tech/kuznia-relay/blob/main/extensions/qa.md) (black-box QA before hand-off).
+
+---
+
+## 1. Principles
+
+1. **The knowledge base is the state.** Task cards, prompts, reports and decisions are files. Any agent, any machine, any day can pick up the work by reading them. Chat history is never the source of truth.
+2. **One step per agent, fresh context per step.** An agent that reviews code never wrote it. An agent that checks a spec never wrote it.
+3. **Checks find, fix rounds fix.** A check never changes what it checks. Fixing is always a separate, scoped round, followed by a re-check.
+4. **Evidence over claims.** Reports carry real command output: git hashes, diff stats, test commands and counts, screenshots. The status of the project is rebuilt from that evidence, not from what an agent says.
+5. **Small calls are decided, big calls stop.** Technical choices with a clear recommended option are made and logged, so work never waits on trivia. Scope, requirements and approvals stop for the human.
+6. **Deliver first, improve later.** Blockers and real problems are fixed before a task is done. Polish goes to a backlog and the task moves on.
+7. **Requirements have an explicit order.** When sources disagree, a written precedence list settles it. When it doesn't, the agent keeps current behaviour and reports the conflict instead of choosing.
+8. **Fit the codebase.** Agents build from the components and patterns that already exist in the target codebase.
+
+---
+
+## 2. Roles
+
+| Role | Who | Does | Never does |
+|---|---|---|---|
+| **Owner** | The human engineer (one per project) | Sets up the repo and feature branches, starts agents, approves specs and code, makes scope and requirement calls | Hand-edits the step history of a task card |
+| **Planner** | An LLM session that writes the knowledge base and MAY read the code repository | Writes plans, specs, prompts; reads reports; updates task cards, Board, Plan, Decisions, Improvements | Changes the code repository; runs agents |
+| **Agent** | A fresh coding-agent session per step | Reads the prompt and the files it links, does exactly one step, writes one report | Edits any knowledge-base file except its own report; pushes outside the allowed remote; opens pull requests |
+
+A project MUST have exactly one Owner. It has one planner, unless the coordinator extension is used (several planners, one coordinator per feature).
+
+---
+
+## 3. Knowledge base layout
+
+The knowledge base is a folder of Markdown files. Links MAY be plain Markdown or wiki-style `[[links]]` (Obsidian works well), except where section 4 says otherwise. It MUST contain:
+
+```
+<project>/
+├── RELAY.md                  # this project's config (section 10)
+├── SPEC.md, AGENT-RULES.md   # copies of this spec and the agent rules
+├── sources/                  # requirement inputs: read-only for everyone but the Owner
+├── Decisions.md              # dated log of decisions and answers, newest first; calls to review are marked
+├── Improvements.md           # nits and polish for after delivery
+├── Implementation/
+│   └── <F> - Plan.md         # goal, approach, open questions, task list (ticked with merge hash at Done)
+└── Workflow/
+    ├── Board.md              # where every task is, what it waits on, blockers, next step
+    ├── Tasks/                # one card per task, with its step history
+    ├── Prompts/              # written by the planner
+    ├── Reports/              # written by agents
+    └── Templates/
+```
+
+### 3.1 Single writers
+
+| File | Writer |
+|---|---|
+| Task cards, Board, Plan, Decisions, Improvements | Planner |
+| Reports | The agent that ran the step |
+| `sources/`, `RELAY.md` | The Owner |
+
+---
+
+## 4. Naming
+
+These names are a contract: tools parse them.
+
+| Thing | Grammar | Example |
+|---|---|---|
+| Feature | `<F>` = `P` + number | `P1` |
+| Task ID | `<F>-T<n>[<letter>]` · one sub-level, for a task split out of `T<n>` | `P1-T7`, `P1-T7c` |
+| Step | `<#> <Step>`, `<Step>` one of `Analyze`, `Spec check`, `Build`, `Review`, `Done` | `2 Spec check` |
+| Task card | `Workflow/Tasks/<TaskID> <Title>.md` | `Tasks/P1-T2 CSV parser.md` |
+| Prompt | `Workflow/Prompts/<TaskID> - <Step>[ (<n>)].md` | `Prompts/P1-T2 - 3 Build (2).md` |
+| Report | Same base name as its prompt, in `Workflow/Reports/` | `Reports/P1-T2 - 3 Build (2).md` |
+| Finding | `F<n>`, per task, never reused; cross-reference as `<TaskID> F<n>` | `P1-T14 F3` |
+| Feature branch | from config, e.g. `feat/<slug>` | `feat/csv-export` |
+| Task branch | `<prefix>/<task id lower-case>-<slug>`; slug = title in lower case, words joined by `-` | `wip/p1-t7c-csv-parser` |
+| Commit message | starts with `[<TaskID>]`; fix rounds `[<TaskID>] Fix F5-F9`; Done `[<TaskID>] Merge <task branch>` | `[P1-T2] Fix F5-F9` |
+| Done tag | `<prefix>/<task id lower-case>-done` on the merge commit | `wip/p1-t2-done` |
+
+**Round numbers.** The first run of a step has no number. Later runs add `(2)`, `(3)`… A fix round and the re-check that follows it **share a number**: `3 Build (2)` fixes what `4 Review` found, and `4 Review (2)` re-checks it. A spec fix has no prompt or report; it is a row `2 Spec fix (n)` in the card's Steps table, numbered as the next run of step 2.
+
+**Prompt and report links** include the folder (`[[Prompts/P1-T2 - 3 Build]]`, `[[Reports/P1-T2 - 3 Build]]`), so a prompt never resolves to the report of the same name. On the Board's "Now" table this is a MUST: tools find the current prompt there.
+
+**Extensions** MAY define extra task ID forms and steps (e.g. `P1-QA`).
+
+---
+
+## 5. The five steps
+
+Every task goes through five steps. The current step is shown at the top of the task card (`step:`) and on the Board.
+
+| # | Step | Who | Output | Exit condition |
+|---|---|---|---|---|
+| 1 | **Analyze** | Agent, read-only | Answers to the prompt's questions with `file:line` references | Questions answered, or handed to the Owner |
+| 2 | **Spec check** | Planner writes the spec, an agent checks it, Owner approves | Spec in the task card; check report | Check is clean (section 6) **and** Owner approves |
+| 3 | **Build** | Agent | Commits on the task branch; build report | Tests pass; report written; branch pushed |
+| 4 | **Review** | Fresh agent (findings only) + Owner | Review report | Check is clean **and** Owner approves the code |
+| 5 | **Done** | Agent or Owner runs the Done prompt; planner records it | Task merged into the feature branch; Done report | Merged, feature tests pass, tagged, pushed; card, Board and Plan updated |
+
+### 5.1 Moving between steps
+- **Analyze** MAY be skipped for a small task; the card says why.
+- If Build finds the spec wrong, the agent stops and reports it; on `report` the planner logs it as a finding ("found in 3 Build") and runs `2 Spec fix`.
+- A task that needs an outside answer is **Blocked** until the answer is logged, then returns to its step.
+- A task card's `state` field is one of `active`, `blocked`, `parked`, `done`, `cancelled`.
+
+### 5.2 Done, in order
+After code approval the planner writes the `5 Done` prompt. Whoever runs it:
+1. Merges the task branch into the feature branch with `--no-ff` and the Done commit message, in the feature worktree.
+2. Runs the feature's full test list there, not a subset. A file that times out is re-run alone before it counts as a failure.
+3. Tags the merge commit with the Done tag and pushes the feature branch and the tag to the allowed remote.
+4. Writes the Done report: merge hash, test output, push output.
+
+On `report`, the planner writes the merge hash into the card (`merge:`) and the Board, and ticks the task in the Plan. The task branch is kept until the feature is delivered.
+
+### 5.3 Branches and worktrees
+- The Owner creates each feature branch, pushes it, and adds its worktree (listed in `RELAY.md`).
+- The first Build creates the task branch from the remote feature branch, in its own worktree. Fix rounds reuse that worktree and first check its head matches the last Build report.
+- Read-only steps (Analyze, Spec check, Review) work in a throwaway detached worktree inside their scratch folder and remove it when done.
+- Done works in the feature worktree. `AGENT-RULES.md` gives the commands.
+
+---
+
+## 6. Checks and fix rounds
+
+Two steps are checks: **Spec check** and **Review**. A check only finds and logs.
+
+**The loop:** Check → Log → Fix → Re-check → … until clean.
+
+### 6.1 Check
+The agent writes its findings in the report's Findings table. Each finding has an ID (continuing from the last ID in the task card), a severity, a location (`file:line` or the Spec line) and a suggested fix (with options A/B/C if there is a real choice). The agent MUST NOT fix anything and MUST NOT offer to. The report's **last line** is `Verdict: clean` or `Verdict: fix round needed: F3, F5`, listing only blocker and should-fix IDs. Nits alone mean `clean`.
+
+### 6.2 Log
+On `report`, the planner copies every finding into the task card's Findings table and sets the decision from the severity, without stopping for the Owner:
+
+| Severity | Meaning | Decision |
+|---|---|---|
+| **blocker** | Can't be built, wrong behaviour, contradicts a decision or a requirement | **fix** |
+| **should fix** | Real problem, not fatal: missing test, edge case, unclear spec line | **fix** |
+| **nit** | Polish, style, naming | **later** → `Improvements.md` (under "Check before delivery" if it touches an acceptance criterion) |
+
+Two exceptions wait for the Owner: a finding with options (A/B/C) that the decision rule (section 7) doesn't settle, and a finding that needs an outside answer (task → **Blocked**). The Owner MAY change any decision.
+
+### 6.3 Fix round
+Only findings marked **fix**, and only those.
+- **Spec findings → `2 Spec fix`.** The planner edits the spec and tags each changed line with its finding ID, e.g. `(F5)`. No agent needed.
+- **Code findings → `3 Build (n)`.** The prompt lists the finding IDs and points to the report. The agent fixes those and nothing else. For each, it adds a test that fails on the old code, or, for a finding that isn't about behaviour (a committed file, config, docs), a command whose output proves the fix. One round is one commit.
+- A fix that needs a file or change the spec doesn't cover goes to `2 Spec fix` first, then Build. If behaviour doesn't change it is a small call under 7.1 with no re-check; if it does, it needs a `2 Spec check (n)` and a new Owner approval.
+- If an agent can't fix a finding as written, it stops and reports it. It MUST NOT invent a different fix.
+
+### 6.4 Re-check
+A fresh agent runs `2 Spec check (n)` or `4 Review (n)`. Its job, in order:
+1. **Each finding from the last round:** fixed / partly / not fixed, with proof (the test, the proof command, or the spec line). The planner marks it **verified** or reopens it.
+2. **What the fix round changed:** new problems only. Settled points are not re-raised.
+3. **A quick end-to-end pass** over the whole task.
+
+New findings take the next IDs and go round the loop again.
+
+### 6.5 Exit and round limit
+A check is **clean** when no blocker or should-fix finding is open. Then the Owner approves (Spec → Build, code → Done).
+
+If the **third** check of the same step still finds a blocker, or reopens the same finding a second time, the loop stops. The planner writes a short note in the task card (what keeps failing and why) with options: split the task, rewrite that part of the spec, or change the approach. The Owner picks.
+
+### 6.6 Finding status
+`open` → `fixed` (fix round) → `verified` (re-check). Or: `later` (nit), `won't fix` (Owner), `blocked` (needs an outside answer), `reopened` (re-check says not fixed).
+
+---
+
+## 7. Decisions
+
+### 7.1 The decision rule
+When a step raises a question that the requirement sources and `Decisions.md` don't answer:
+- **Small or technical** (a user-facing string the sources don't give, an engineering option A/B, a status code that keeps existing behaviour): the planner picks the recommended option and continues.
+- **Every such call** is logged in `Decisions.md` (date, task, question, options, picked, why, who) and marked **to review**. The Owner tells the planner "ok" or "change" for each; the planner records it, and a reversed call becomes a new finding on the task.
+- **Estimates never stop a task.** Note the new size and continue.
+
+Agents decide only things that don't change behaviour (names, how they test, scratch paths) and list them in their report.
+
+### 7.2 Stop points
+These always stop for the Owner:
+- Spec approval and code approval (unless delegated to a coordinator).
+- Anything that needs a client, a designer or another stakeholder.
+- Scope changes: work outside the feature, especially changing existing behaviour beyond what the feature needs.
+- A change to an acceptance criterion or to an earlier Owner decision.
+- The round limit (section 6.5).
+- An agent that stops with a question it can't answer from the knowledge base, or fails twice.
+- Anything risky: a force push, a push outside the allowed remote, a merge conflict, a red feature suite after a merge.
+
+### 7.3 Source precedence
+`RELAY.md` lists the requirement sources in order, strongest first (for example: dated decisions, then tickets and acceptance criteria, then the design). A difference caused by a stronger source is expected, not a mistake. When sources conflict in a way the list doesn't settle, the agent keeps current behaviour, reports it under "Design check", and the Owner decides.
+
+---
+
+## 8. One round of work
+
+1. Owner: `prompt P1-T1`.
+2. Planner writes `Workflow/Prompts/P1-T1 - 1 Analyze.md` and replies with **one line** to paste into a fresh agent: `P1-T1 - 1 Analyze: read and follow <absolute path to the prompt>`
+3. Owner starts the agent with that line.
+4. Agent does the step and writes `Workflow/Reports/P1-T1 - 1 Analyze.md` from the report template.
+5. Owner: `report P1-T1`.
+6. Planner reads the report and updates the task card, Board, Plan and Decisions, then says what's next.
+
+### 8.1 Commands
+
+The planner MUST support these commands. Tools SHOULD expose them as buttons or slash commands.
+
+| Command | Effect |
+|---|---|
+| `where are we?` | Current step of every active task, who it waits on, and what's next |
+| `plan <F>` | Write `Implementation/<F> - Plan.md` from the feature's requirement doc, with a task list; add a card and a Board row per task |
+| `new task <F>: <name>` | Add one task: card, Board row, Plan line |
+| `prompt <task>` | Write the prompt for the task's current step; reply with the paste line |
+| `report <task>` | Read the report of the highest round of the current step, update the docs, move the step |
+| `approve <task>` | Add a dated "Owner approved" row to the card's Steps table. Spec approved → Build; code approved → Done |
+| `fix <task>` | Start the fix round: fix spec findings in the card, write the `3 Build (n)` prompt for code findings |
+| `findings <task>` | Show open findings: ID, severity, decision, round |
+
+---
+
+## 9. Rules for agents
+
+Every agent follows `AGENT-RULES.md`. Every prompt MUST link it with an absolute path.
+
+---
+
+## 10. Project config (`RELAY.md`)
+
+Every project has one config file, from the `RELAY.md` template. Its YAML front matter is what tools read; prompts link it. The front matter MUST define `owner`, `knowledge_base` (an absolute path valid on every machine that runs agents), `repo`, `base`, `allowed_remote` (name and URL of the only remote agents push to), `worktrees` (folder for task worktrees), `features`, `source_precedence` (section 7.3), `test_commands` (including `done`, the full list run at Done) and `env`; a key that doesn't apply is set to `none`. It MAY define `ui_rule`, `models` (reviews SHOULD run on a different model from the build) and `stop_points_extra`. Extensions MAY add keys.
+
+---
+
+## 11. Report contract
+
+A report MUST follow the report template: same sections, same order, real command output in **Git** and **Tests**. A check report ends with its `Verdict:` line (section 6.1); a re-check fills **Previous findings** before new **Findings**.
+
+### 11.1 Task-card front matter
+
+```yaml
+id: P1-T2            # task ID
+feature: P1
+step: 3 Build        # "<#> <Step>" as in section 4
+state: active        # active | blocked | parked | done | cancelled
+branch: wip/p1-t2-csv-parser
+merge:               # merge commit hash, set at Done
+```
+
+---
+
+## Appendix A. Lessons (rules with the incidents that produced them)
+
+Each rule below exists because something went wrong without it. More in the coordinator and QA extensions.
+
+| Rule | Why |
+|---|---|
+| One writer per file | Two writers of the decisions log produced duplicate rows |
+| Scratch only in your own `/tmp/<task-step>/`; create it first | A browser-test setup in shared `/tmp` was removed by a later step; loose log files piled up; a missing folder silently swallowed output |
+| Kill by PID or port, never `pkill -f <pattern>` | A pattern kill on one task probably killed another worktree's test workers mid-suite |
+| Never touch another task's worktree | Parallel tasks share one machine; another task's worktree is someone's live build |
+| No `--no-verify`; amend with the hook running | A build skipped the hook to get past unrelated lint failures, so the commit never met the checks CI runs |
+| Run the full test list at Done, re-run timeouts alone | Subsets missed regressions; timeouts under load looked like failures |
+| Fetch and compare with the remote before starting | Work moves between machines overnight |
+
+Changes between versions: `CHANGELOG.md`.
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script>
+(function () {
+  var md = document.getElementById('src').textContent.replace(/^\s*#[^\n]*\n+\*\*[^\n]*\n+/, '## Foreword\n\n');
+  var tmp = document.createElement('div');
+  tmp.innerHTML = marked.parse(md);
+  var doc = document.getElementById('doc');
+  var toc = document.getElementById('toc');
+  var page = 3, sheet = null, sections = [];
+  Array.prototype.slice.call(tmp.children).forEach(function (el) {
+    if (el.tagName === 'HR') return;
+    if (el.tagName === 'H2') {
+      page += 1;
+      el.textContent = el.textContent.replace(/^(\d+)\.\s/, '$1.0  ');
+      var id = 's' + page;
+      sheet = document.createElement('section');
+      sheet.className = 'sheet flow';
+      sheet.id = id;
+      var title = el.textContent;
+      var num = (title.match(/^(\d+\.0|Appendix [A-Z])/) || [''])[0];
+      sheet.innerHTML = '<div class="runhead"><span>RLY-SPEC-001</span><span>Kuznia Relay gated workflow specification</span><span>' + (num ? 'Sect. ' + num.replace('.0', '') : 'Front matter') + '</span></div>';
+      sections.push({ id: id, title: title, page: page, sheet: sheet });
+      doc.appendChild(sheet);
+    }
+    if (!sheet) return;
+    if (el.tagName === 'TABLE') {
+      var w = document.createElement('div');
+      w.className = 'tbl';
+      w.appendChild(el);
+      el = w;
+    }
+    sheet.appendChild(el);
+  });
+  var last = page;
+  sections.forEach(function (s) {
+    var f = document.createElement('div');
+    f.className = 'runfoot';
+    f.innerHTML = '<span>RLY-SPEC-001</span><span>Page ' + s.page + ' of ' + last + '</span>';
+    s.sheet.appendChild(f);
+    var li = document.createElement('li');
+    li.innerHTML = '<a href="#' + s.id + '"></a><span class="lead"></span><span class="pg">' + s.page + '</span>';
+    li.firstChild.textContent = s.title;
+    toc.appendChild(li);
+  });
+  var tail = sections[sections.length - 1].sheet;
+  var end = document.createElement('p');
+  end.className = 'endmark';
+  end.textContent = '- END OF DOCUMENT -';
+  tail.insertBefore(end, tail.lastChild);
+  document.querySelectorAll('.cover .runfoot span:last-child, [data-label="Approvals"] .runfoot span:last-child, #contents .runfoot span:last-child').forEach(function (s, i) {
+    s.textContent = 'Page ' + (i + 1) + ' of ' + last;
+  });
+})();
+</script>

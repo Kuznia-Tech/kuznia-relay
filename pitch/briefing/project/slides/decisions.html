@@ -1,0 +1,36 @@
+<section id="decisions" data-transition="fade" style="background:#F1ECDD;color:#1D1C19;font-family:'Courier Prime', 'Courier New', monospace;padding:168px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:48px;top:48px;width:1824px;height:984px;border:3px solid #1D1C19"></div>
+<div style="position:absolute;left:128px;top:80px;width:1664px;display:flex;justify-content:space-between;border-bottom:2px solid #1D1C19;padding:0 0 12px 0">
+<p style="font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif;font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase">Kuznia Relay Program Office</p>
+<p style="font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif;font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase">Program briefing · RLY-BR-001</p>
+</div>
+<div style="position:absolute;left:128px;bottom:64px;width:1664px;display:flex;justify-content:space-between;border-top:2px solid #1D1C19;padding:10px 0 0 0">
+<p style="font-size:24px">Chart 6 of 12</p>
+<p style="font-size:24px">Rev. A · 6 Nov 2026</p>
+</div>
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#A3312A">5.0&#160;&#160;DECISION AUTHORITY</p>
+<h2 style="font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.05;text-transform:uppercase">Small calls are decided. Big calls stop.</h2>
+<div style="display:flex;gap:40px">
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;border:2px solid #1D1C19;padding:28px 32px">
+<h3 style="font-family:'Courier Prime', 'Courier New', monospace;font-size:28px;font-weight:700;text-transform:uppercase">5.1 Decide, log, continue</h3>
+<ul style="font-size:26px;line-height:1.45;color:#4A473F">
+<li>A string the design doesn’t cover</li>
+<li>Engineering option A or B</li>
+<li>A status code that keeps behaviour</li>
+<li>A new estimate (size never stops work)</li>
+</ul>
+<p style="font-size:24px;line-height:1.4">Each call is one row in <b>Decisions.md</b>, marked to review. Reversed? It becomes a finding.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;border:4px double #A3312A;background:#E4DCC6;padding:26px 30px">
+<h3 style="font-family:'Courier Prime', 'Courier New', monospace;font-size:28px;font-weight:700;text-transform:uppercase;color:#A3312A">5.2 Stop for the owner</h3>
+<ul style="font-size:26px;line-height:1.45">
+<li>Spec and code approval</li>
+<li>Anything a client, designer or stakeholder answers</li>
+<li>Scope or acceptance-criteria changes</li>
+<li>Round limit, force push, merge conflict, red suite</li>
+</ul>
+</div>
+</div>
+<p style="font-size:26px;line-height:1.45"><b>5.3 ORDER OF PRECEDENCE.</b> Set per project in RELAY.md, e.g. (a) dated decisions, (b) tickets and acceptance criteria, (c) design. Unsettled? Keep current behaviour and report it.</p>
+<aside>This is what lets work run overnight without a human. Trivia never blocks; anything that touches scope, requirements or the client always does. The owner reviews the decision log when convenient. In our case study, roughly 800 calls were made without stopping the engineer and logged for review.</aside>
+</section>

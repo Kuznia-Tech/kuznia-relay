@@ -1,0 +1,21 @@
+<section id="tooling" data-transition="fade" style="background:#F6F4EE;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#A44F16;letter-spacing:2px">BUILT TO BE TOOLED</p>
+<h2 style="font-size:72px;font-weight:600;line-height:1.1;color:#14213D">File names are the API. No database needed.</h2>
+<div style="display:flex;gap:48px;align-items:flex-start">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#14213D;padding:40px;border-radius:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#E8913A;line-height:1.5">Tasks/P1-T7 CSV parser.md</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#DCE2EC;line-height:1.5">Prompts/P1-T7 - 4 Review.md</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#DCE2EC;line-height:1.5">Reports/P1-T7 - 4 Review.md</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#DCE2EC;line-height:1.5">Prompts/P1-T7 - 3 Build (2).md</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#DCE2EC;line-height:1.5">Reports/P1-T7 - 4 Review (2).md</p>
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:26px;color:#8C98AD;line-height:1.5">Verdict: clean</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;gap:20px;align-items:flex-start"><x-icon name="Chart" style="color:#2F6DB0;width:48px;height:48px"></x-icon><p style="font-size:30px;color:#3D4757;line-height:1.4"><b>Board panel</b> (built): every live prompt with Run, Insert, Copy and Open buttons, and a mark when its report is in.</p></div>
+<div style="display:flex;gap:20px;align-items:flex-start"><x-icon name="Settings" style="color:#2F6DB0;width:48px;height:48px"></x-icon><p style="font-size:30px;color:#3D4757;line-height:1.4"><b>Coordinator</b> (used): drives agent threads through a CLI and waits for fresh reports.</p></div>
+<div style="display:flex;gap:20px;align-items:flex-start"><x-icon name="Lightbulb" style="color:#2F6DB0;width:48px;height:48px"></x-icon><p style="font-size:30px;color:#3D4757;line-height:1.4"><b>Next</b>: findings dashboard, decisions inbox, stale-step alerts.</p></div>
+<p style="font-size:28px;color:#3D4757;line-height:1.4">docs/tools.md defines the events: prompt ready, step finished, verdict, task moved, decision to review, done.</p>
+</div>
+</div>
+<aside>Everything is plain Markdown with a strict naming grammar, so tools can be thin. The board panel was built as an editor plugin during the case study; the coordinator used an off-the-shelf agent-thread CLI. A team can start with zero tooling and add it as the loop becomes routine.</aside>
+</section>

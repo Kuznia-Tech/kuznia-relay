@@ -1,0 +1,10 @@
+name: Idea or experience report
+description: A proposal, or what happened when you used Relay on a real project
+labels: ["idea"]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What and why
+    validations:
+      required: true

@@ -1,0 +1,33 @@
+<section id="steps" data-transition="fade" style="background:#F6F4EE;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:56px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#A44F16;letter-spacing:2px">EVERY TASK</p>
+<h2 style="font-size:72px;font-weight:600;line-height:1.1;color:#14213D">Five steps, two of them checks</h2>
+<div style="display:flex;gap:16px;align-items:stretch">
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;background:#FFFDF8;padding:32px;border:1px solid #DED9CC;border-radius:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:44px;font-weight:600;color:#2F6DB0">1</p>
+<h3 style="font-size:36px;font-weight:600">Analyze</h3>
+<p style="font-size:26px;color:#3D4757;line-height:1.4">Read-only agent answers questions with file:line proof</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;background:#FCEBD9;padding:32px;border:1px solid #E8B98C;border-radius:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:44px;font-weight:600;color:#A44F16">2</p>
+<h3 style="font-size:36px;font-weight:600">Spec check</h3>
+<p style="font-size:26px;color:#3D4757;line-height:1.4">Planner writes it; an agent checks it against code and sources; owner approves</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;background:#FFFDF8;padding:32px;border:1px solid #DED9CC;border-radius:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:44px;font-weight:600;color:#2F6DB0">3</p>
+<h3 style="font-size:36px;font-weight:600">Build</h3>
+<p style="font-size:26px;color:#3D4757;line-height:1.4">Agent codes on its own branch, inside the spec, tests pass</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;background:#FCEBD9;padding:32px;border:1px solid #E8B98C;border-radius:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:44px;font-weight:600;color:#A44F16">4</p>
+<h3 style="font-size:36px;font-weight:600">Review</h3>
+<p style="font-size:26px;color:#3D4757;line-height:1.4">A fresh agent logs findings only; owner approves the code</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:14px;background:#FFFDF8;padding:32px;border:1px solid #DED9CC;border-radius:16px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:44px;font-weight:600;color:#2F6DB0">5</p>
+<h3 style="font-size:36px;font-weight:600">Done</h3>
+<p style="font-size:26px;color:#3D4757;line-height:1.4">Merge, full feature tests, tag, push; report the hash</p>
+</div>
+</div>
+<p style="font-size:30px;color:#3D4757;line-height:1.4">One round = <b>prompt</b> → paste one line into a fresh agent → <b>report</b> → the planner updates the board. Eight short commands run the whole project.</p>
+<aside>Orange steps are checks. They are the heart of the method. The round is deliberately boring: the owner types "prompt P1-T4", pastes one line into a new agent, then types "report P1-T4". Small tasks may skip Analyze, and the card says why.</aside>
+</section>

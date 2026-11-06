@@ -1,0 +1,50 @@
+<section id="qa" data-transition="fade" style="background:#F1ECDD;color:#1D1C19;font-family:'Courier Prime', 'Courier New', monospace;padding:168px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:48px;top:48px;width:1824px;height:984px;border:3px solid #1D1C19"></div>
+<div style="position:absolute;left:128px;top:80px;width:1664px;display:flex;justify-content:space-between;border-bottom:2px solid #1D1C19;padding:0 0 12px 0">
+<p style="font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif;font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase">Kuznia Relay Program Office</p>
+<p style="font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif;font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase">Program briefing · RLY-BR-001</p>
+</div>
+<div style="position:absolute;left:128px;bottom:64px;width:1664px;display:flex;justify-content:space-between;border-top:2px solid #1D1C19;padding:10px 0 0 0">
+<p style="font-size:24px">Chart 8 of 12</p>
+<p style="font-size:24px">Rev. A · 6 Nov 2026</p>
+</div>
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#A3312A">7.0&#160;&#160;QUALITY ASSURANCE · OPTIONAL EXTENSION</p>
+<h2 style="font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.05;text-transform:uppercase">Black-box QA, checked by a second model</h2>
+<div style="display:flex;gap:12px;align-items:center">
+<div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:10px;border:2px solid #1D1C19;padding:20px">
+<p style="font-size:24px;font-weight:700;color:#A3312A">7.1 SCENARIOS</p>
+<p style="font-size:24px;line-height:1.4;color:#4A473F">From requirement sources only</p>
+</div>
+<x-shape kind="arrow-right" style="background:#1D1C19;width:36px;height:18px"></x-shape>
+<div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:10px;border:2px solid #1D1C19;padding:20px">
+<p style="font-size:24px;font-weight:700;color:#A3312A">7.2 ENV</p>
+<p style="font-size:24px;line-height:1.4;color:#4A473F">Seeded app at the exact commit</p>
+</div>
+<x-shape kind="arrow-right" style="background:#1D1C19;width:36px;height:18px"></x-shape>
+<div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:10px;border:2px solid #1D1C19;padding:20px">
+<p style="font-size:24px;font-weight:700;color:#A3312A">7.3 RUN</p>
+<p style="font-size:24px;line-height:1.4;color:#4A473F">Parallel groups, screenshots, API evidence</p>
+</div>
+<x-shape kind="arrow-right" style="background:#1D1C19;width:36px;height:18px"></x-shape>
+<div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:10px;border:4px double #1D1C19;background:#E4DCC6;padding:18px">
+<p style="font-size:24px;font-weight:700;color:#A3312A">7.4 VALIDATE</p>
+<p style="font-size:24px;line-height:1.4">Second model opens every cited screenshot</p>
+</div>
+<x-shape kind="arrow-right" style="background:#1D1C19;width:36px;height:18px"></x-shape>
+<div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:10px;border:2px solid #1D1C19;padding:20px">
+<p style="font-size:24px;font-weight:700;color:#A3312A">7.5 SUMMARY</p>
+<p style="font-size:24px;line-height:1.4;color:#4A473F">Counts and PR screenshots</p>
+</div>
+</div>
+<div style="display:flex;gap:40px;align-items:center">
+<div style="flex:1;display:flex;flex-direction:column;gap:8px">
+<p style="font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif;font-size:96px;font-weight:700;line-height:1.0;text-transform:uppercase">0 fails</p>
+<p style="font-size:26px;line-height:1.4;color:#4A473F">About 80 scenarios on one feature, each a Pass, Deviation or Known. Every run re-checked by a second model.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;border:4px double #A3312A;padding:26px 30px">
+<h3 style="font-family:'Courier Prime', 'Courier New', monospace;font-size:28px;font-weight:700;text-transform:uppercase;color:#A3312A">A Deviation is never a Pass</h3>
+<p style="font-size:25px;line-height:1.4">Where we chose differently from the client’s requirement, QA says so and the client signs it off. QA never fixes; fails become findings.</p>
+</div>
+</div>
+<aside>The second model is there because a model checking its own work tends to share its own blind spots. Deviations are listed separately so our engineering decisions never silently replace client requirements at sign-off.</aside>
+</section>

@@ -1,0 +1,46 @@
+<section id="steps" data-transition="fade" style="background:#F1ECDD;color:#1D1C19;font-family:'Courier Prime', 'Courier New', monospace;padding:168px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="position:absolute;left:48px;top:48px;width:1824px;height:984px;border:3px solid #1D1C19"></div>
+<div style="position:absolute;left:128px;top:80px;width:1664px;display:flex;justify-content:space-between;border-bottom:2px solid #1D1C19;padding:0 0 12px 0">
+<p style="font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif;font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase">Kuznia Relay Program Office</p>
+<p style="font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif;font-size:24px;font-weight:700;letter-spacing:4px;text-transform:uppercase">Program briefing · RLY-BR-001</p>
+</div>
+<div style="position:absolute;left:128px;bottom:64px;width:1664px;display:flex;justify-content:space-between;border-top:2px solid #1D1C19;padding:10px 0 0 0">
+<p style="font-size:24px">Chart 4 of 12</p>
+<p style="font-size:24px">Rev. A · 6 Nov 2026</p>
+</div>
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;color:#A3312A">3.0&#160;&#160;SEQUENCE OF OPERATIONS</p>
+<h2 style="font-family:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif;font-size:60px;font-weight:700;line-height:1.05;text-transform:uppercase">Five steps per task, two of them checks</h2>
+<div style="display:flex;gap:12px;align-items:center">
+<div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:12px;border:2px solid #1D1C19;padding:22px 20px">
+<p style="font-size:24px;font-weight:700;color:#A3312A">STEP 1</p>
+<h3 style="font-family:'Courier Prime', 'Courier New', monospace;font-size:28px;font-weight:700;text-transform:uppercase">Analyze</h3>
+<p style="font-size:24px;line-height:1.4;color:#4A473F">Read-only agent answers questions with file:line proof</p>
+</div>
+<x-shape kind="arrow-right" style="background:#1D1C19;width:36px;height:18px"></x-shape>
+<div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:12px;border:4px double #1D1C19;background:#E4DCC6;padding:20px 18px">
+<p style="font-size:24px;font-weight:700;color:#A3312A">STEP 2 · CHECK</p>
+<h3 style="font-family:'Courier Prime', 'Courier New', monospace;font-size:28px;font-weight:700;text-transform:uppercase">Spec check</h3>
+<p style="font-size:24px;line-height:1.4">Planner writes it; an agent checks it; owner approves</p>
+</div>
+<x-shape kind="arrow-right" style="background:#1D1C19;width:36px;height:18px"></x-shape>
+<div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:12px;border:2px solid #1D1C19;padding:22px 20px">
+<p style="font-size:24px;font-weight:700;color:#A3312A">STEP 3</p>
+<h3 style="font-family:'Courier Prime', 'Courier New', monospace;font-size:28px;font-weight:700;text-transform:uppercase">Build</h3>
+<p style="font-size:24px;line-height:1.4;color:#4A473F">Agent codes on its own branch, inside the spec, tests pass</p>
+</div>
+<x-shape kind="arrow-right" style="background:#1D1C19;width:36px;height:18px"></x-shape>
+<div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:12px;border:4px double #1D1C19;background:#E4DCC6;padding:20px 18px">
+<p style="font-size:24px;font-weight:700;color:#A3312A">STEP 4 · CHECK</p>
+<h3 style="font-family:'Courier Prime', 'Courier New', monospace;font-size:28px;font-weight:700;text-transform:uppercase">Review</h3>
+<p style="font-size:24px;line-height:1.4">A fresh agent logs findings only; owner approves code</p>
+</div>
+<x-shape kind="arrow-right" style="background:#1D1C19;width:36px;height:18px"></x-shape>
+<div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:12px;border:2px solid #1D1C19;padding:22px 20px">
+<p style="font-size:24px;font-weight:700;color:#A3312A">STEP 5</p>
+<h3 style="font-family:'Courier Prime', 'Courier New', monospace;font-size:28px;font-weight:700;text-transform:uppercase">Done</h3>
+<p style="font-size:24px;line-height:1.4;color:#4A473F">Merge, full feature tests, tag, push; report the hash</p>
+</div>
+</div>
+<p style="font-size:28px;line-height:1.45">One round: <b>prompt</b> → paste one line into a fresh agent → <b>report</b> → the planner updates the board. Eight short commands run the whole project.</p>
+<aside>Shaded, double-ruled steps are checks. They are the heart of the method. The round is deliberately boring: the owner types "prompt P1-T4", pastes one line into a new agent, then types "report P1-T4". Small tasks may skip Analyze, and the card says why.</aside>
+</section>

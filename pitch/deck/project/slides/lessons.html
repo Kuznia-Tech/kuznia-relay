@@ -1,0 +1,15 @@
+<section id="lessons" data-transition="fade" style="background:#F6F4EE;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#A44F16;letter-spacing:2px">GUARDRAILS</p>
+<h2 style="font-size:72px;font-weight:600;line-height:1.1;color:#14213D">Every rule has an incident behind it</h2>
+<table style="font-size:28px;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif">
+<tr><th style="width:46%;color:#A44F16">Rule</th><th style="width:54%;color:#A44F16">Because</th></tr>
+<tr><td>Wait for a report newer than the step’s start</td><td>Re-runs found the old report and looked done</td></tr>
+<tr><td>Check the report file, not the agent’s status</td><td>Agents ended their turn “waiting for tests”</td></tr>
+<tr><td>One writer per file, planners under a lock</td><td>Two writers produced duplicate decision rows</td></tr>
+<tr><td>Kill by PID or port, never by pattern</td><td>A pattern kill hit another task’s test workers</td></tr>
+<tr><td>Own scratch folder, own worktree</td><td>A shared test setup was gone when a later step needed it</td></tr>
+<tr><td>Never skip commit hooks</td><td>A commit dodged the checks CI runs</td></tr>
+</table>
+<p style="font-size:28px;color:#3D4757;line-height:1.4">The spec and its extensions ship these as lessons tables, so a new team starts with them instead of rediscovering them.</p>
+<aside>This slide is usually what convinces engineering leads: it shows the method was hardened by real parallel agent runs on shared machines, not designed on a whiteboard.</aside>
+</section>

@@ -1,0 +1,27 @@
+<section id="decisions" data-transition="fade" style="background:#F6F4EE;color:#14213D;font-family:'IBM Plex Sans', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;gap:48px">
+<p style="font-family:'JetBrains Mono', 'Courier New', monospace;font-size:28px;color:#A44F16;letter-spacing:2px">DECISIONS</p>
+<h2 style="font-size:72px;font-weight:600;line-height:1.1;color:#14213D">Small calls are decided. Big calls stop.</h2>
+<div style="display:flex;gap:40px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#FFFDF8;padding:48px;border:1px solid #DED9CC;border-radius:16px">
+<div style="display:flex;align-items:center;gap:16px"><x-icon name="Lightning" style="color:#2F6DB0;width:48px;height:48px"></x-icon><h3 style="font-size:40px;font-weight:600">Decide, log, continue</h3></div>
+<ul style="font-size:30px;color:#3D4757;line-height:1.5">
+<li>A string the design doesn’t cover</li>
+<li>Engineering option A or B</li>
+<li>A status code that keeps existing behaviour</li>
+<li>A new estimate (size never stops work)</li>
+</ul>
+<p style="font-size:26px;color:#3D4757;line-height:1.4">Each call is one row in <b>Decisions.md</b>, marked to review: question, options, pick, why, who. Reversed? It becomes a finding.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#14213D;padding:48px;border-radius:16px">
+<div style="display:flex;align-items:center;gap:16px"><x-icon name="Warning" style="color:#E8913A;width:48px;height:48px"></x-icon><h3 style="font-size:40px;font-weight:600;color:#F6F4EE">Stop for the owner</h3></div>
+<ul style="font-size:30px;color:#DCE2EC;line-height:1.5">
+<li>Spec and code approval</li>
+<li>Anything a client, designer or stakeholder must answer</li>
+<li>Scope or acceptance-criteria changes</li>
+<li>Round limit, force push, merge conflict, red suite</li>
+</ul>
+</div>
+</div>
+<p style="font-size:28px;color:#3D4757;line-height:1.4">A written <b>source precedence</b> in RELAY.md settles conflicts, e.g. dated decisions → tickets and acceptance criteria → design. Unsettled? Keep current behaviour and report it.</p>
+<aside>This is what lets work run overnight without a human. Trivia never blocks; anything that touches scope, requirements or the client always does. The owner reviews the decision log when convenient. In our case study, roughly 800 calls were made without stopping the engineer and logged for review.</aside>
+</section>
